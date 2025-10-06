@@ -14,6 +14,7 @@ export default function TaskApp() {
   
   const handleDelete = (id) => {
     // TODO: filter tasks by id to remove the clicked one
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
   

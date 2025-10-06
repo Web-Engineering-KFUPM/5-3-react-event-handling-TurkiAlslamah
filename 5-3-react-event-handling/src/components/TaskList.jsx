@@ -9,7 +9,7 @@ export default function TaskList({ tasks, onDelete }) {
 
       {/* Task 2 & 3 – Map tasks to TaskItem */}
       {tasks.map((task) => (
-        <TaskItem key={task.id} text={task.text} onDelete={onDelete} />
+        <TaskItem id={task.id} text={task.text} onDelete={onDelete} />
       ))}
       
     </ul>
