@@ -2,36 +2,31 @@ import React, { useState } from "react";
 import TaskList from "./TaskList";
 
 export default function TaskApp() {
-  const [text, setText] = useState("");
-  const [tasks, setTasks] = useState([]);
-
+  
   const handleSubmit = () => {
-    if (text.trim() === "") return; 
-    const newTask = { id: Date.now(), text };
-    setTasks((prev) => [...prev, newTask]);
-    setText(""); // clear input
+   
   };
 
+  
   const handleDelete = (id) => {
-    // filter out the task with the given id
-    setTasks((prev) => prev.filter((task) => task.id !== id));
+    // TODO: filter tasks by id to remove the clicked one
   };
 
+  
   const handleClearAll = () => {
-    // clear all tasks
-    setTasks([]);
+    // TODO: set tasks to empty array
   };
 
   return (
     <section className="card">
-      {/* Controlled Input */}
+      {/*Controlled Input */}
       <div className="inputRow">
         <input
           type="text"
           placeholder="Type a task..."
           className="input"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          // TODO: value={text}
+          // TODO: onChange={(e) => setText(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") handleSubmit();
           }}
@@ -41,13 +36,11 @@ export default function TaskApp() {
         </button>
       </div>
 
-      {/* Optional: show live text */}
-      <p>{text}</p>
+      {/*Render Task List and Enable Delete */}
+      {/*Pass tasks and onDelete */}
+      <TaskList /* tasks={tasks} onDelete={handleDelete} */ />
 
-      {/* Render Task List and Enable Delete */}
-      <TaskList tasks={tasks} onDelete={handleDelete} />
-
-      {/* Clear All */}
+      {/*Clear All */}
       <div className="footerRow">
         <button className="btn btn--ghost" onClick={handleClearAll}>
           Clear All
