@@ -3,8 +3,12 @@ import TaskList from "./TaskList";
 
 export default function TaskApp() {
   const [text, setText] = useState("");
+  const [tasks, setTasks] = useState([]);
   const handleSubmit = () => {
-   
+   if(text.trim() ==="") return;
+    const newTask = { id: Date.now(), text: text.trim() };
+    setTasks([...tasks, newTask]);
+    setText("");
   };
 
   
@@ -42,7 +46,7 @@ export default function TaskApp() {
 
       {/*Render Task List and Enable Delete */}
       {/*Pass tasks and onDelete */}
-      <TaskList /* tasks={tasks} onDelete={handleDelete} */ />
+      <TaskList  tasks={tasks} onDelete={handleDelete} />
 
       {/*Clear All */}
       <div className="footerRow">
